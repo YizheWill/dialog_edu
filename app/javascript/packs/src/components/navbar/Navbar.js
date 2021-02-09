@@ -84,7 +84,7 @@ export default function PrimarySearchAppBar() {
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
       id={menuId}
       keepMounted
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
@@ -98,7 +98,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position='static'>
+      <AppBar position='static' style={{ backgroundColor: '#444' }}>
         <Toolbar>
           <Typography className={classes.title} variant='h6' noWrap>
             DIALOG EDU
@@ -108,7 +108,7 @@ export default function PrimarySearchAppBar() {
               <SearchIcon />
             </div>
             <InputBase
-              placeholder='Search…'
+              placeholder='Search Articles…'
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
@@ -120,9 +120,7 @@ export default function PrimarySearchAppBar() {
           <div className={classes.sectionDesktop}>
             <IconButton
               edge='end'
-              aria-label='account of current user'
               aria-controls={menuId}
-              aria-haspopup='true'
               onClick={handleProfileMenuOpen}
               color='inherit'
             >
