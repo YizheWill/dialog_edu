@@ -6,6 +6,7 @@ import store from './src/store';
 import App from './src/App';
 
 document.addEventListener('DOMContentLoaded', () => {
+  window.store = store;
   ReactDOM.render(
     <Provider store={store}>
       <CssBaseline />
