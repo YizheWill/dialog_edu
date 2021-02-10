@@ -34,7 +34,7 @@ function Articles({ articles, fetchArticles, deleteArticle }) {
 }
 
 const mapStateToProps = (state) => ({
-  articles: Object.values(state.entities.articles),
+  articles: Object.values(state.entities.articles).reverse(),
 });
 
 const mapDispatchToProps = (dispatch) => ({

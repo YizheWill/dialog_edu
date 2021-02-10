@@ -10,7 +10,10 @@ export default (oldState = _initState, action) => {
     case RECEIVE_COMMENTS:
       return action.payload;
     case RECEIVE_COMMENT:
-      return { ...oldState, [action.payload.id]: action.payload.comment };
+      return {
+        ...oldState,
+        [action.payload.comment.id]: action.payload.comment,
+      };
     case REMOVE_COMMENT:
       const newState = { ...oldState };
       delete newState[action.payload];

@@ -46,7 +46,7 @@ export const apiEditArticle = (article) => {
 };
 
 export const apiSearchArticles = (keyword) => {
-  const url = `/api/articles?key_word=${keyword}`;
+  const url = `/api/articles?search=${keyword}`;
   const fetchRequestOptions = {
     method: 'GET',
     header: {

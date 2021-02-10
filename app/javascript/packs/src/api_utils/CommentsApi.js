@@ -37,7 +37,7 @@ export const apiDeleteComment = (commentId) => {
   return fetch(url, { method: 'DELETE' }).then((res) => res.json());
 };
 export const apiFetchCommentsUnderArticle = (articleId) => {
-  const url = `/api/articles/${articleId}/comments`;
+  const url = `/api/comments?article_id=${articleId}`;
   return fetch(url).then((res) => {
     console.log('res', res);
     return res.json();

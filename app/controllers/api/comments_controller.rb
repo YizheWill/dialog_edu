@@ -5,13 +5,9 @@ class Api::CommentsController < ApplicationController
     p 'params'
     p params
     if params[:article_id]
-      p 'id'
-      p params[:article_id]
-      @comments = Comment.where({ article_id: params[:article_id] })
-      p 'comments'
-      p @comments
+      @comments = Comment.where({ article_id: params[:article_id] }).reverse
     else
-      @comments = Comment.all
+      @comments = Comment.all.reverse
     end
   end
 
