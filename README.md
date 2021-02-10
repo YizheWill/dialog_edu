@@ -1,24 +1,41 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### project for dialog EDU
 
-Things you may want to cover:
+---
 
-* Ruby version
+## engines
 
-* System dependencies
+### 1. rails version: 6.0.3.4
 
-* Configuration
+### 2. ruby version: 2.7.1p83
 
-* Database creation
+---
 
-* Database initialization
+## Instruction
 
-* How to run the test suite
+### 1. clone the project
 
-* Services (job queues, cache servers, search engines, etc.)
+### 2. set up the dababase by running: "rails db:setup"
 
-* Deployment instructions
+### 3. install webpacker: "rails webpacker:install:react"
 
-* ...
+### 4. start server: "rails s"
+
+### 5. check the frontend pages in browser: localhost:3000
+
+--- test
+
+### 1. for articles: "rails test test/models/article_test.rb"
+
+### 2. for comments: "rails test test/models/article_test.rb"
+
+### 3. for users: "rails test test/models/user_test.rb"
+
+--- snapshots
+
+## 1. Home: (ALL ARTICLES)
+
+## 2. Comments: (All comments)
+
+## 3. article Comments:
