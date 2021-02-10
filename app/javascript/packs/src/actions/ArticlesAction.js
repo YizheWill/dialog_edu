@@ -19,27 +19,32 @@ export const removeArticle = (id) => ({
 });
 
 export const actionFetchArticles = () => (dispatch) => {
-  ArticlesApi.apiFetchArticles.then((res) => dispatch(receiveArticles(res)));
+  return ArticlesApi.apiFetchArticles().then((res) => {
+    console.log('res', res);
+    dispatch(receiveArticles(res));
+  });
 };
 
 export const actionFetchArticle = (id) => (dispatch) => {
-  ArticlesApi.apiFetchArticle(id).then((article) =>
+  return ArticlesApi.apiFetchArticle(id).then((article) =>
     dispatch(receiveArticle(article))
   );
 };
 
 export const actionDeleteArticle = (id) => (dispatch) => {
-  ArticlesApi.apiDeleteArticle(id).then((res) => dispatch(removeArticle(id)));
+  return ArticlesApi.apiDeleteArticle(id).then((res) =>
+    dispatch(removeArticle(id))
+  );
 };
 
 export const actionEditArticle = (article) => (dispatch) => {
-  ArticlesApi.apiEditArticle(article).then((res) =>
+  return ArticlesApi.apiEditArticle(article).then((res) =>
     dispatch(receiveArticles(res))
   );
 };
 
 export const actionCreateArticle = (article) => (dispatch) => {
-  ArticlesApi.apiCreateArticle(article).then((res) =>
+  return ArticlesApi.apiCreateArticle(article).then((res) =>
     dispatch(receiveArticle(res))
   );
 };

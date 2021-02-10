@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 function Articles({ articles, fetchArticles }) {
   useEffect(() => {
+    console.log('fetching');
     fetchArticles();
   }, []);
   return (
@@ -13,7 +14,8 @@ function Articles({ articles, fetchArticles }) {
           <div>
             <h1>{article.title}</h1>
             <h3>{article.body}</h3>
-            <h5>{article.user}</h5>
+            <h5>{article.author}</h5>
+            <h5>{article.createdAt}</h5>
           </div>
         );
       })}
@@ -26,7 +28,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchArticles: () => dispatch(actionFetchArticles),
+  fetchArticles: () => dispatch(actionFetchArticles()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Articles);

@@ -1,6 +1,8 @@
 class Api::ArticlesController < ApplicationController
   def index
     @articles = Article.all
+    p 'articles'
+    p @articles
   end
 
   def show
