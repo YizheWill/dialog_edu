@@ -26,7 +26,7 @@ export const actionFetchArticles = () => (dispatch) => {
 };
 
 export const actionFetchArticle = (id) => (dispatch) => {
-  return ArticlesApi.apiFetchArticle(id).then((article) =>
+  return ArticlesApi.apiFetchArticle(id).then(({ article }) =>
     dispatch(receiveArticle(article))
   );
 };

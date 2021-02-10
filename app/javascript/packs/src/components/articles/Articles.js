@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { actionFetchArticles } from '../../actions/ArticlesAction';
 import { connect } from 'react-redux';
+import ArticleItem from './ArticleItem';
+import { Grid } from '@material-ui/core';
 
 function Articles({ articles, fetchArticles }) {
   useEffect(() => {
@@ -8,17 +10,16 @@ function Articles({ articles, fetchArticles }) {
     fetchArticles();
   }, []);
   return (
-    <div>
-      {articles.map((article) => {
-        return (
-          <div>
-            <h1>{article.title}</h1>
-            <h3>{article.body}</h3>
-            <h5>{article.author}</h5>
-            <h5>{article.createdAt}</h5>
-          </div>
-        );
-      })}
+    <div
+      style={{
+        padding: '5% 5%',
+      }}
+    >
+      <Grid container>
+        {articles.map((article, idx) => {
+          return <ArticleItem key={idx} article={article} />;
+        })}
+      </Grid>
     </div>
   );
 }

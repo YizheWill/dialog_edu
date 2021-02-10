@@ -10,6 +10,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { AccountCircle } from '@material-ui/icons';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -67,6 +68,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+  const history = useHistory();
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -100,7 +102,13 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position='static' style={{ backgroundColor: '#444' }}>
         <Toolbar>
-          <Typography className={classes.title} variant='h6' noWrap>
+          <Typography
+            className={classes.title}
+            variant='h6'
+            noWrap
+            style={{ cursor: 'pointer' }}
+            onClick={() => history.push('/')}
+          >
             DIALOG EDU
           </Typography>
           <div className={classes.search}>

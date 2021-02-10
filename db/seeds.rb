@@ -13,7 +13,7 @@ end
 
 30.times do
   title = Faker::Book.title
-  body = Faker::Movies::HitchhikersGuideToTheGalaxy.quote
+  body = Faker::Books::Lovecraft.paragraph(sentence_count: 5, random_sentences_to_add: 1)
   Article.create({ title: title, body: body, user_id: (1..10).to_a.sample })
 end
 
