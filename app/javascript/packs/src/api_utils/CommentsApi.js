@@ -4,6 +4,10 @@ export const apiFetchComments = () => {
   const url = '/api/comments';
   return fetch(url).then((res) => res.json());
 };
+export const apiFetchSingleComment = (id) => {
+  const url = '/api/comments/' + id;
+  return fetch(url).then((res) => res.json());
+};
 
 export const apiCreateComment = (comment) => {
   const url = '/api/comments';
@@ -39,7 +43,6 @@ export const apiDeleteComment = (commentId) => {
 export const apiFetchCommentsUnderArticle = (articleId) => {
   const url = `/api/comments?article_id=${articleId}`;
   return fetch(url).then((res) => {
-    console.log('res', res);
     return res.json();
   });
 };

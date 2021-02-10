@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :articles, only: %i(index show destroy update create) do
       resources :comments, only: %i(index)
     end
-    resources :comments, only: %i(index show update create)
+    resources :comments, only: %i(index show update create destroy)
   end
   root 'home#index'
   match '*path', to: 'home#index', via: [:get]

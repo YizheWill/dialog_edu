@@ -14,7 +14,6 @@ function NewArticle({ article, editArticle, getArticle }) {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [err, setErr] = useState('');
-  console.log(article);
   useEffect(() => {
     getArticle(articleId);
   }, [articleId, getArticle]);

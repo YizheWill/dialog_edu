@@ -2,10 +2,15 @@ import * as CommentsApi from '../api_utils/CommentsApi';
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
+export const RECEIVE_SINGLE_COMMENT = 'RECEIVE_SINGLE_COMMENT';
 
 export const receiveComments = (comments) => ({
   type: RECEIVE_COMMENTS,
   payload: comments,
+});
+export const receiveSingleComment = (comment) => ({
+  type: RECEIVE_SINGLE_COMMENT,
+  payload: comment,
 });
 
 export const receiveComment = (comment) => ({
@@ -30,9 +35,9 @@ export const actionCreateComment = (comment) => (dispatch) => {
 };
 
 export const actionEditComment = (comment) => (dispatch) => {
-  return CommentsApi.apiEditComment(comment).then((res) =>
-    dispatch(receiveComment(res))
-  );
+  return CommentsApi.apiEditComment(comment).then((res) => {
+    return dispatch(receiveComment(res));
+  });
 };
 
 export const actionDeleteComment = (id) => (dispatch) => {
@@ -44,5 +49,11 @@ export const actionDeleteComment = (id) => (dispatch) => {
 export const actionFetchCommentsUnderArticle = (id) => (dispatch) => {
   return CommentsApi.apiFetchCommentsUnderArticle(id).then((res) =>
     dispatch(receiveComments(res))
+  );
+};
+
+export const actionFetchSingleComment = (id) => (dispatch) => {
+  return CommentsApi.apiFetchSingleComment(id).then((res) =>
+    dispatch(receiveSingleComment(res))
   );
 };

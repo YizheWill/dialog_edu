@@ -69,10 +69,6 @@ const useStyles = makeStyles((theme) => ({
 function Navbar({ searchArticles }) {
   const [keyword, setKeyword] = useState('');
   const location = useLocation();
-  console.log(
-    "loation.pathname === '/article/new'",
-    location.pathname === '/article/new'
-  );
   const history = useHistory();
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -134,7 +130,6 @@ function Navbar({ searchArticles }) {
                 value={keyword}
                 onChange={(e) => setKeyword(e.target.value)}
                 onKeyDown={(e) => {
-                  // console.log('e.key', e.key);
                   if (e.key === 'Enter') {
                     searchArticles(keyword);
                     setKeyword('');

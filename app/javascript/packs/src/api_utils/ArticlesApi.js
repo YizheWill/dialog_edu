@@ -3,7 +3,6 @@ import { serialize } from 'object-to-formdata';
 export const apiFetchArticles = (pageNumber) => {
   const url = `/api/articles`;
   return fetch(url).then((res) => {
-    console.log('res', res);
     return res.json();
   });
 };

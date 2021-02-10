@@ -9,7 +9,6 @@ import { Grid } from '@material-ui/core';
 
 function Articles({ articles, fetchArticles, deleteArticle }) {
   useEffect(() => {
-    console.log('fetching');
     fetchArticles();
   }, []);
   return (

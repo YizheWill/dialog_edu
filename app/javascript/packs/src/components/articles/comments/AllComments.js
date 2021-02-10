@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { actionFetchComments } from '../../../actions/CommentsAction';
 const Item = ({ comment }) => {
   const history = useHistory();
-  console.log('comment', comment);
   return (
     <div
       style={{
@@ -17,6 +16,7 @@ const Item = ({ comment }) => {
         margin: '30px 0',
         position: 'relative',
       }}
+      onClick={() => history.push('/comments/' + comment.id)}
     >
       <div
         style={{
@@ -73,7 +73,10 @@ const Item = ({ comment }) => {
           cursor: 'pointer',
           fontSize: 20,
         }}
-        onClick={() => history.push('/articles/' + comment.article.id)}
+        onClickCapture={(e) => {
+          e.nativeEvent.stopImmediatePropagation();
+          history.push('/articles/' + comment.article.id);
+        }}
       >
         <span style={{ fontWeight: 800, color: 'black' }}>Commented On: </span>
         {comment?.article?.title || 'hey'}

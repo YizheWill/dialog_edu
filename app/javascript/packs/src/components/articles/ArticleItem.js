@@ -37,10 +37,20 @@ export default function ArticleCard({ article, deleteArticle }) {
   const classes = useStyles();
 
   return (
-    <Grid item xs={12} md={4} small={6} style={{ position: 'relative' }}>
+    <Grid
+      item
+      xs={12}
+      md={4}
+      small={6}
+      style={{ position: 'relative', cursor: 'pointer' }}
+      onClick={() => history.push(`/articles/${article.id}`)}
+    >
       <IconButton
         style={{ position: 'absolute', right: 35, top: 35 }}
-        onClick={() => deleteArticle(article.id)}
+        onClickCapture={(e) => {
+          e.nativeEvent.stopPropagation();
+          deleteArticle(article.id);
+        }}
       >
         <DeleteForeverIcon style={{ color: 'red', opacity: 0.3 }} />
       </IconButton>
@@ -62,10 +72,7 @@ export default function ArticleCard({ article, deleteArticle }) {
           }
           subheader={article.createdAt.slice(0, 10)}
         />
-        <CardContent
-          style={{ cursor: 'pointer' }}
-          onClick={() => history.push(`/articles/${article.id}`)}
-        >
+        <CardContent>
           <Typography
             style={{ fontFamily: "'Oswald', sans-serif" }}
             variant='body2'

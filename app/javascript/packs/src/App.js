@@ -6,6 +6,7 @@ import NewArticle from './components/articles/NewArticle';
 import Drawer from './components/articles/comments/Comment';
 import AllComments from './components/articles/comments/AllComments';
 import EditArticle from './components/articles/EditArticle';
+import CommentItem from './components/articles/comments/CommentItem';
 import './App.css';
 
 function App() {
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route exact path='/editarticle/:articleId'>
             <EditArticle />
+          </Route>
+          <Route exact path='/comments/:commentId'>
+            <CommentItem />
           </Route>
         </Switch>
       </Router>

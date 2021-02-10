@@ -20,7 +20,6 @@ export const removeArticle = (id) => ({
 
 export const actionFetchArticles = () => (dispatch) => {
   return ArticlesApi.apiFetchArticles().then((res) => {
-    console.log('res', res);
     dispatch(receiveArticles(res));
   });
 };
