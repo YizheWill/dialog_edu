@@ -56,14 +56,28 @@ export default function ArticleCard({ article }) {
                 .slice(0, 2)}
             </Avatar>
           }
-          title={article.title}
+          title={
+            <Typography style={{ fontFamily: "'Oswald', sans-serif" }}>
+              {article.title}
+            </Typography>
+          }
           subheader={article.createdAt.slice(0, 10)}
         />
         <CardContent>
-          <Typography variant='body2' color='primary' component='p'>
+          <Typography
+            style={{ fontFamily: "'Oswald', sans-serif" }}
+            variant='body2'
+            color='primary'
+            component='p'
+          >
             {article.author}
           </Typography>
-          <Typography variant='body2' color='textSecondary' component='p'>
+          <Typography
+            style={{ fontFamily: "'Oswald', sans-serif" }}
+            variant='body2'
+            color='textSecondary'
+            component='p'
+          >
             {article.body.slice(0, 50) + '...'}
           </Typography>
         </CardContent>

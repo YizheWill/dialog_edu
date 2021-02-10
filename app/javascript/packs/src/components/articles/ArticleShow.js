@@ -15,25 +15,66 @@ function ArticleShow({ article, fetchArticle }) {
       <Navbar />
       <div
         style={{
+          width: '100vw',
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
+          marginTop: 100,
         }}
       >
-        <Avatar style={{ marginRight: '1rem' }}>
-          {article?.user?.username
-            ?.split(' ')
-            ?.map((el) => el[0].toUpperCase())
-            ?.join('')
-            .slice(0, 1)}
-        </Avatar>
-        <Typography>Author: {article?.user?.username}</Typography>
+        <Typography
+          style={{
+            fontSize: 30,
+            fontWeight: 800,
+            marginBottom: '2rem',
+            fontFamily: "'Oswald', sans-serif",
+          }}
+        >
+          {article?.title}
+        </Typography>
+        <Typography
+          style={{
+            fontSize: 18,
+            fontWeight: 100,
+            maxWidth: 500,
+            fontFamily: "'Oswald', sans-serif",
+            letterSpacing: 1,
+            lineHeight: 3,
+          }}
+        >
+          {article?.body}
+        </Typography>
+
+        <div
+          style={{
+            marginTop: 100,
+            marginBottom: 100,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Avatar
+            style={{
+              marginBottom: '2rem',
+              width: 100,
+              height: 100,
+              backgroundColor: 'red',
+              fontSize: 30,
+              fontWeight: 900,
+              fontFamily: "'Oswald', sans-serif",
+            }}
+          >
+            {article?.user?.username
+              ?.split(' ')
+              ?.map((el) => el[0].toUpperCase())
+              ?.join('')
+              .slice(0, 1)}
+          </Avatar>
+          <Typography color='primary'>By: {article?.user?.username}</Typography>
+        </div>
       </div>
-      <Typography style={{ fontSize: 30, fontWeight: 800 }}>
-        {article?.title}
-      </Typography>
-      <Typography style={{ fontSize: 18, fontWeight: 100 }}>
-        {article?.body}
-      </Typography>
     </div>
   );
 }

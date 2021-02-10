@@ -1,6 +1,6 @@
 import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
+import { AppBar, Button } from '@material-ui/core';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
@@ -106,7 +106,11 @@ export default function PrimarySearchAppBar() {
             className={classes.title}
             variant='h6'
             noWrap
-            style={{ cursor: 'pointer' }}
+            style={{
+              cursor: 'pointer',
+              fontFamily: "'Oswald', sans-serif",
+              fontWeight: 800,
+            }}
             onClick={() => history.push('/')}
           >
             DIALOG EDU
@@ -126,14 +130,13 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton
-              edge='end'
-              aria-controls={menuId}
-              onClick={handleProfileMenuOpen}
-              color='inherit'
+            <Button
+              variant='contained'
+              style={{ backgroundColor: 'white', color: '#444' }}
+              onClick={() => history.push('/article/new')}
             >
-              <AccountCircle />
-            </IconButton>
+              Write an Article
+            </Button>
           </div>
         </Toolbar>
       </AppBar>

@@ -15,7 +15,7 @@ export const apiFetchArticle = (articleId) => {
 
 export const apiCreateArticle = (article) => {
   const url = '/api/articles';
-  let formdata = serialize(article);
+  let formdata = serialize({ article: article });
   const fetchRequestOptions = {
     method: 'POST',
     header: {
@@ -34,7 +34,7 @@ export const apiDeleteArticle = (articleId) => {
 // TODO could be problemetic here
 export const apiEditArticle = (article) => {
   const url = `/api/articles/${article.id}`;
-  const formData = serialize(article);
+  const formData = serialize({ article: article });
   const fetchRequestOptions = {
     method: 'PATCH',
     header: {

@@ -4,6 +4,6 @@
     json.user_id comment.user_id
     json.article_id comment.article_id
     json.content comment.content
-    json.createdAt comment.createdAt
+    json.createdAt comment.created_at
   end
 end

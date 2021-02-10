@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   end
   root 'home#index'
   match '*path', to: 'home#index', via: [:get]
-  get '/comments/:article_id', to: 'comments#under_this_article'
+  get '/api/comments/:article_id', to: 'comments#under_this_article'
 end

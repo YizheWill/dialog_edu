@@ -2,27 +2,70 @@
 
 require 'rails_helper'
 
-feature 'article feature' do
+feature 'article creating process' do
 
-  scenario 'create a new artcle' do
+  scenario 'have a new artcle page' do
     visit new_article_url
-    expect(page).to have_content 'New user'
+    expect(page).to have_content 'New article'
   end
 
-  feature 'signing up a user' do
+  feature 'creating a aricle' do
     before(:each) do
-      visit new_user_url
-      fill_in 'username', with: 'testing_username'
-      fill_in 'password', with: 'biscuits'
-      click_on 'Create User'
+      visit new_article_url
+      fill_in 'title', with: 'testing_title'
+      fill_in 'body', with: 'biscuits are not good'
+      click_on 'Create Article'
     end
 
-    scenario 'redirects to team index page after signup' do
-      expect(page).to have_content 'Team Index Page'
+    scenario 'redirects to article index page after creating' do
+      expect(page).to have_content 'Aritcle Index Page'
     end
 
-    scenario 'shows username on the homepage after signup' do
-      expect(page).to have_content 'testing_username'
+  end
+end
+
+
+
+feature 'article updating process' do
+
+  scenario 'update an artcle page' do
+    visit new_article_url
+    expect(page).to have_content 'Update article'
+  end
+
+  feature 'update a aricle' do
+    before(:each) do
+      visit new_article_url
+      fill_in 'title', with: 'updating_title'
+      fill_in 'body', with: 'biscuits are good and tasty'
+      click_on 'Update Article'
     end
+
+    scenario 'redirects to article index page after updating' do
+      expect(page).to have_content 'Aritcle Index Page'
+    end
+
+  end
+end
+
+feature 'article updating process' do
+
+  scenario 'update an artcle page' do
+    visit new_article_url
+    expect(page).to have_content 'Update article'
+  end
+
+  feature 'update a aricle' do
+    before(:each) do
+      visit new_article_url
+      fill_in 'title', with: 'updating_title'
+      fill_in 'body', with: 'biscuits are good and tasty'
+      click_on 'Update Article'
+    end
+
+    scenario 'redirects to article index page after updating' do
+      expect(page).to have_content 'Aritcle Index Page'
+    end
+
   end
 end
