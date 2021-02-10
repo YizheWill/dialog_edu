@@ -48,3 +48,7 @@ export const actionCreateArticle = (article) => (dispatch) => {
     dispatch(receiveArticle(res))
   );
 };
+export const actionFetchArticlesKeyword = (keyword) => (dispatch) =>
+  ArticlesApi.apiSearchArticles(keyword).then((res) => {
+    return dispatch(receiveArticles(res));
+  });

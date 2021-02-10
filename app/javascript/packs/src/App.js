@@ -5,6 +5,7 @@ import ArticleShow from './components/articles/ArticleShow';
 import NewArticle from './components/articles/NewArticle';
 import Drawer from './components/articles/comments/Comment';
 import AllComments from './components/articles/comments/AllComments';
+import EditArticle from './components/articles/EditArticle';
 import './App.css';
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route exact path='/comments'>
             <AllComments />
+          </Route>
+          <Route exact path='/editarticle/:articleId'>
+            <EditArticle />
           </Route>
         </Switch>
       </Router>

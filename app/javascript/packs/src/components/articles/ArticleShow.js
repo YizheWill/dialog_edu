@@ -1,26 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { Avatar, Typography } from '@material-ui/core';
+import { Avatar, Typography, Button } from '@material-ui/core';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { actionFetchArticle } from '../../actions/ArticlesAction';
 import Navbar from '../navbar/Navbar';
 import Comment from './comments/Comment';
 
 function ArticleShow({ article, fetchArticle }) {
+  const history = useHistory();
   const { articleId } = useParams();
   useEffect(() => {
     fetchArticle(articleId);
   }, []);
   return (
-    <div style={{ position: 'relative' }}>
+    <div>
       <Navbar />
       <div
         style={{
-          position: 'absolute',
+          position: 'fixed',
           display: 'flex',
           flexDirection: 'column',
           right: 30,
-          top: 200,
+          top: 150,
           justifyContent: 'center',
           alignItems: 'center',
         }}
@@ -37,6 +38,26 @@ function ArticleShow({ article, fetchArticle }) {
           articleId={article.id}
           comments={article.comments ? Object.values(article.comments) : []}
         />
+        <div
+          style={{
+            width: 2,
+            height: 40,
+            backgroundColor: '#444',
+            opacity: 0.3,
+          }}
+        ></div>
+        <Button
+          variant='contained'
+          style={{
+            backgroundColor: '#444',
+            color: 'white',
+            margin: 10,
+            width: '110px',
+          }}
+          onClick={() => history.push('/editarticle/' + article.id)}
+        >
+          Edit
+        </Button>
         <div
           style={{
             width: 2,

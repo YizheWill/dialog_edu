@@ -153,7 +153,7 @@ function Comment({ comments, fetchComments, createComment }) {
         />
         <Button
           onClick={sendComment}
-          style={{ position: 'absolute', bottom: 10, right: 110 }}
+          style={{ position: 'absolute', bottom: 10, right: 110, width: 110 }}
         >
           send
         </Button>

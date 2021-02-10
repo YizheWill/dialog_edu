@@ -2,9 +2,12 @@ class Api::ArticlesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @articles = Article.all
-    p 'articles'
-    p @articles
+    if (params[:key_word])
+      to_search = "#{params[:key_word]}"
+      @articles = Article.where("title LIKE '%#{to_search}%'").or(Article.where("body LIKE '%#{to_search}%'"))
+    else
+      @articles = Article.all
+    end
   end
 
   def show

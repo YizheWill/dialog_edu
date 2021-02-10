@@ -38,21 +38,21 @@ export default function ArticleCard({ article, deleteArticle }) {
 
   return (
     <Grid item xs={12} md={4} small={6} style={{ position: 'relative' }}>
-      <IconButton style={{ position: 'absolute', right: 35, top: 35 }}>
-        <DeleteForeverIcon
-          style={{ color: 'red', opacity: 0.3 }}
-          onClick={() => deleteArticle(article.id)}
-        />
+      <IconButton
+        style={{ position: 'absolute', right: 35, top: 35 }}
+        onClick={() => deleteArticle(article.id)}
+      >
+        <DeleteForeverIcon style={{ color: 'red', opacity: 0.3 }} />
       </IconButton>
       <Card className={classes.root}>
         <CardHeader
           avatar={
             <Avatar aria-label='recipe' className={classes.avatar}>
-              {article.author
-                .split(' ')
-                .map((el) => el[0].toUpperCase())
-                .join('')
-                .slice(0, 2)}
+              {article?.author
+                ?.split(' ')
+                ?.map((el) => el[0].toUpperCase())
+                ?.join('')
+                ?.slice(0, 2)}
             </Avatar>
           }
           title={

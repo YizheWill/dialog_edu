@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { AppBar, Button } from '@material-ui/core';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import { AccountCircle } from '@material-ui/icons';
+import { actionFetchArticlesKeyword } from '../../actions/ArticlesAction';
 import { useHistory, useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -67,7 +66,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+function Navbar({ searchArticles }) {
+  const [keyword, setKeyword] = useState('');
   const location = useLocation();
   console.log(
     "loation.pathname === '/article/new'",
@@ -120,19 +120,32 @@ export default function PrimarySearchAppBar() {
           >
             DIALOG EDU
           </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+          {location.pathname === '/' ? (
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder='Search Articles…'
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                value={keyword}
+                onChange={(e) => setKeyword(e.target.value)}
+                onKeyDown={(e) => {
+                  // console.log('e.key', e.key);
+                  if (e.key === 'Enter') {
+                    searchArticles(keyword);
+                    setKeyword('');
+                  }
+                }}
+                inputProps={{ 'aria-label': 'search' }}
+              />
             </div>
-            <InputBase
-              placeholder='Search Articles…'
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
+          ) : (
+            ''
+          )}
           <div className={classes.grow} />
           {location.pathname === '/article/new' ? (
             ''
@@ -159,3 +172,9 @@ export default function PrimarySearchAppBar() {
     </div>
   );
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  searchArticles: (keyword) => dispatch(actionFetchArticlesKeyword(keyword)),
+});
+
+export default connect(null, mapDispatchToProps)(Navbar);
