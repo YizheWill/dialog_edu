@@ -20,7 +20,7 @@
 
 ### 3. install webpacker: `rails webpacker:install:react`
 
-### 4. start server: `rails start`
+### 4. start server: `rails s`
 
 ### 5. check the frontend pages in browser: localhost:3000
 
