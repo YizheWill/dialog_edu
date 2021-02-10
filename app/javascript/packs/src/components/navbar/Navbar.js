@@ -10,7 +10,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { AccountCircle } from '@material-ui/icons';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -68,6 +68,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+  const location = useLocation();
+  console.log(
+    "loation.pathname === '/article/new'",
+    location.pathname === '/article/new'
+  );
   const history = useHistory();
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -129,15 +134,25 @@ export default function PrimarySearchAppBar() {
             />
           </div>
           <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            <Button
-              variant='contained'
-              style={{ backgroundColor: 'white', color: '#444' }}
-              onClick={() => history.push('/article/new')}
-            >
-              Write an Article
-            </Button>
-          </div>
+          {location.pathname === '/article/new' ? (
+            ''
+          ) : (
+            <div className={classes.sectionDesktop}>
+              <Button
+                style={{ color: 'white', marginRight: 20 }}
+                onClick={() => history.push('/comments')}
+              >
+                See All Comments
+              </Button>
+              <Button
+                variant='contained'
+                style={{ backgroundColor: 'white', color: '#444' }}
+                onClick={() => history.push('/article/new')}
+              >
+                Write an Article
+              </Button>
+            </div>
+          )}
         </Toolbar>
       </AppBar>
       {renderMenu}

@@ -3,14 +3,24 @@ import { Typography, TextField, Button } from '@material-ui/core';
 import Navbar from '../navbar/Navbar';
 import { connect } from 'react-redux';
 import { actionCreateArticle } from '../../actions/ArticlesAction';
+import { useHistory } from 'react-router-dom';
 
 function NewArticle({ createArticle }) {
+  const history = useHistory();
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
+  const [err, setErr] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!body.length || !title.length || title.length < 10) {
+      setErr(
+        'Must have a title and some content, and the title must be at least 10 characters'
+      );
+      return;
+    }
     const article = { title, body, user_id: 1 };
     createArticle(article);
+    history.push('/');
   };
   return (
     <div>
@@ -37,6 +47,7 @@ function NewArticle({ createArticle }) {
         >
           Create New Article
         </Typography>
+        <p style={{ color: 'red' }}>{err}</p>
         <TextField
           id='outlined-multiline-flexible'
           label='Article Title'

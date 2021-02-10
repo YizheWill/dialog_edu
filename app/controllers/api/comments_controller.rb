@@ -2,8 +2,17 @@ class Api::CommentsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @comments = Comment.all
-    render 'api/comments/index'
+    p 'params'
+    p params
+    if params[:article_id]
+      p 'id'
+      p params[:article_id]
+      @comments = Comment.where({ article_id: params[:article_id] })
+      p 'comments'
+      p @comments
+    else
+      @comments = Comment.all
+    end
   end
 
   def show

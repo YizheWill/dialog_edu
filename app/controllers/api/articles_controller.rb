@@ -35,11 +35,11 @@ class Api::ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = article.find(params[:id])
+    @article = Article.find_by(id: params[:id])
     if @article.destroy
-      render 'api/articles/show'
+      render :show
     else
-      render json['Failed to delete article.']
+      render json({ msg: 'error' })
     end
   end
 

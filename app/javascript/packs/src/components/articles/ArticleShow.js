@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { actionFetchArticle } from '../../actions/ArticlesAction';
 import Navbar from '../navbar/Navbar';
+import Comment from './comments/Comment';
 
 function ArticleShow({ article, fetchArticle }) {
   const { articleId } = useParams();
@@ -11,8 +12,40 @@ function ArticleShow({ article, fetchArticle }) {
     fetchArticle(articleId);
   }, []);
   return (
-    <div>
+    <div style={{ position: 'relative' }}>
       <Navbar />
+      <div
+        style={{
+          position: 'absolute',
+          display: 'flex',
+          flexDirection: 'column',
+          right: 30,
+          top: 200,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <div
+          style={{
+            width: 2,
+            height: 100,
+            backgroundColor: '#444',
+            opacity: 0.3,
+          }}
+        ></div>
+        <Comment
+          articleId={article.id}
+          comments={article.comments ? Object.values(article.comments) : []}
+        />
+        <div
+          style={{
+            width: 2,
+            height: 100,
+            backgroundColor: '#444',
+            opacity: 0.3,
+          }}
+        ></div>
+      </div>
       <div
         style={{
           width: '100vw',

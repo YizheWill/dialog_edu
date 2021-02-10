@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   namespace :api do
-    resources :articles, only: %i(index show destroy update create)
+    resources :articles, only: %i(index show destroy update create) do
+      resources :comments, only: %i(index)
+    end
     resources :comments, only: %i(index show update create)
   end
   root 'home#index'

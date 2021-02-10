@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid } from '@material-ui/core';
+import { Grid, IconButton } from '@material-ui/core';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
@@ -27,24 +28,22 @@ const useStyles = makeStyles((theme) => ({
     transform: 'rotate(180deg)',
   },
   avatar: {
-    backgroundColor: red[500],
+    backgroundColor: '#444',
   },
 }));
 
-export default function ArticleCard({ article }) {
+export default function ArticleCard({ article, deleteArticle }) {
   const history = useHistory();
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
 
   return (
-    <Grid
-      item
-      xs={12}
-      md={4}
-      small={6}
-      style={{ cursor: 'pointer' }}
-      onClick={() => history.push(`/articles/${article.id}`)}
-    >
+    <Grid item xs={12} md={4} small={6} style={{ position: 'relative' }}>
+      <IconButton style={{ position: 'absolute', right: 35, top: 35 }}>
+        <DeleteForeverIcon
+          style={{ color: 'red', opacity: 0.3 }}
+          onClick={() => deleteArticle(article.id)}
+        />
+      </IconButton>
       <Card className={classes.root}>
         <CardHeader
           avatar={
@@ -63,7 +62,10 @@ export default function ArticleCard({ article }) {
           }
           subheader={article.createdAt.slice(0, 10)}
         />
-        <CardContent>
+        <CardContent
+          style={{ cursor: 'pointer' }}
+          onClick={() => history.push(`/articles/${article.id}`)}
+        >
           <Typography
             style={{ fontFamily: "'Oswald', sans-serif" }}
             variant='body2'

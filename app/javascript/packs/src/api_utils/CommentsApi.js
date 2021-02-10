@@ -1,8 +1,13 @@
 import { serialize } from 'object-to-formdata';
 
+export const apiFetchComments = () => {
+  const url = '/api/comments';
+  return fetch(url).then((res) => res.json());
+};
+
 export const apiCreateComment = (comment) => {
   const url = '/api/comments';
-  let formdata = serialize({comment: comment});
+  let formdata = serialize({ comment: comment });
   const fetchRequestOptions = {
     method: 'POST',
     header: {
@@ -10,13 +15,13 @@ export const apiCreateComment = (comment) => {
     },
     body: formdata,
   };
-  return fetch(url, fetchRequestOptions).then(res => res.json());
+  return fetch(url, fetchRequestOptions).then((res) => res.json());
 };
 
 // TODO could be problemetic here
 export const apiEditComment = (comment) => {
   const url = `/api/comments/${comment.id}`;
-  const formData = serialize({comment: comment});
+  const formData = serialize({ comment: comment });
   const fetchRequestOptions = {
     method: 'PATCH',
     header: {
@@ -32,7 +37,7 @@ export const apiDeleteComment = (commentId) => {
   return fetch(url, { method: 'DELETE' }).then((res) => res.json());
 };
 export const apiFetchCommentsUnderArticle = (articleId) => {
-  const url = `/api/comments/${articleId}`;
+  const url = `/api/articles/${articleId}/comments`;
   return fetch(url).then((res) => {
     console.log('res', res);
     return res.json();
